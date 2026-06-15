@@ -1,0 +1,33 @@
+seed: 20260524
+sample_count: 8
+variant: noisde
+hutchinson_M: 1
+
+task:
+  kind: double_well
+  state_dim: 2
+  beta: 1.0
+  batch_size: 8
+  context_dim: 1
+
+model:
+  state_dim: 2
+  context_dim: 1
+  rank: 2
+  hidden_dim: 8
+  depth: 1
+  diffusion_floor: 0.0001
+  diffusion_max_scale: 0.05
+  energy_guidance_scale: 1.0
+  variant: A4
+  fixed_noise_scale: 0.01
+  over_noise_scale: 3.0
+
+pf_companion:
+  mode: current
+  num_steps: 2
+  use_exact_divergence: true
+
+gates:
+  ess_n_min: 0.05
+  log_weight_995_max: 6.0

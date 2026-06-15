@@ -1,0 +1,23 @@
+name: chi2_demarcation_overlay
+description: Figure 2 raw-observable demarcation overlay.
+command:
+  - python
+  - -m
+  - noisde.figures.chi2_demarcation_overlay
+  - --root
+  - .
+  - --outdir
+  - results/figures/chi2_demarcation_overlay
+  - --source-data
+  - results/figures/chi2_demarcation_overlay/chi2_demarcation_overlay_source.csv
+  - --stats-dir
+  - results/statistics/figures
+outputs:
+  - results/figures/chi2_demarcation_overlay/chi2_demarcation_overlay.pdf
+  - results/figures/chi2_demarcation_overlay/chi2_demarcation_overlay.svg
+source_data:
+  - results/figures/chi2_demarcation_overlay/chi2_demarcation_overlay_source.csv
+large_raw_source:
+  path: data/external/raw_observables_chi2_demarcation.csv
+  status: omitted_from_git
+  reason: 3.3 GB raw-observable CSV; compact binned source data is included for figure reproduction.

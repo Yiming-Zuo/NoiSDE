@@ -1,0 +1,17 @@
+panel,observable,group,total_count,in_range_count,in_range_fraction,raw_min,raw_max,xlim_low,xlim_high
+A,chi2_contribution,all,2020000,1812389,0.8972222772277227,0.10303303,190.59166,0.0,6.0
+A,chi2_contribution,decile,200000,200000,1.0,0.10303303,190.59166,0.0,6.0
+A,chi2_contribution,chi2,20000,20000,1.0,0.10303303,190.59166,0.0,6.0
+A,chi2_contribution,utility,20000,19999,0.99995,0.10303303,190.59166,0.0,6.0
+B,mode_residual_normalized,all,2020000,1870772,0.9261247524752475,0.0,1.818488,0.0,1.0
+B,mode_residual_normalized,decile,200000,199996,0.99998,0.0,1.818488,0.0,1.0
+B,mode_residual_normalized,chi2,20000,19999,0.99995,0.0,1.818488,0.0,1.0
+B,mode_residual_normalized,utility,20000,20000,1.0,0.0,1.818488,0.0,1.0
+C,swap_log_alpha,all,2020000,1942354,0.9615613861386139,-5.9056778,1.8,-3.0,1.2
+C,swap_log_alpha,decile,200000,199923,0.999615,-5.9056778,1.8,-3.0,1.2
+C,swap_log_alpha,chi2,20000,19993,0.99965,-5.9056778,1.8,-3.0,1.2
+C,swap_log_alpha,utility,20000,19992,0.9996,-5.9056778,1.8,-3.0,1.2
+D,energy_minus_high_threshold,all,2020000,2014943,0.9974965346534653,-8.3980061,6.2418964,-6.0,2.5
+D,energy_minus_high_threshold,decile,200000,199855,0.999275,-8.3980061,6.2418964,-6.0,2.5
+D,energy_minus_high_threshold,chi2,20000,19985,0.99925,-8.3980061,6.2418964,-6.0,2.5
+D,energy_minus_high_threshold,utility,20000,19984,0.9992,-8.3980061,6.2418964,-6.0,2.5

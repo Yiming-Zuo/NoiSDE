@@ -1,0 +1,51 @@
+# Component-attribution matrix for manuscript variants.
+
+variants:
+  F0:
+    role: deterministic backbone
+    model_variant: F0
+    utility_loss: false
+  F1:
+    role: energy-guided drift only
+    model_variant: F1
+    utility_loss: false
+  F2:
+    role: positive noise without energy-guided drift
+    model_variant: F2
+    utility_loss: true
+  A2:
+    role: fixed isotropic noise sweep
+    model_variant: A2
+    fixed_noise_grid: [0.02, 0.05, 0.08, 0.12, 0.18, 0.28, 0.42, 0.65]
+    utility_loss: false
+  A3_prime:
+    role: learned isotropic noise without utility
+    model_variant: A3_prime
+    utility_loss: false
+  A3:
+    role: learned isotropic noise with utility
+    model_variant: A3
+    utility_loss: true
+  A4_prime:
+    role: full architecture without utility
+    model_variant: A4_prime
+    utility_loss: false
+  A4:
+    role: full NoiSDE
+    model_variant: A4
+    utility_loss: true
+  A5:
+    role: over-noise stress variant
+    model_variant: A5
+    over_noise_scale: 3.0
+    utility_loss: true
+  B1:
+    role: non-PN learnable stochastic control
+    model_variant: B1
+    utility_loss: false
+
+selection:
+  rule: safe_pareto_knee
+  safety_gates:
+    r_high_e_max: 0.1
+    d_e_max: 0.1

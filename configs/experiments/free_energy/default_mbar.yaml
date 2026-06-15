@@ -1,0 +1,29 @@
+estimator:
+  method: pf_companion_reweighted_fep_with_mbar_windows
+  pymbar: true
+  bootstrap_resamples: 2000
+  unit: kcal/mol
+
+windows:
+  alanine_temperature:
+    schedule_K: [300.0, 338.7, 382.4, 431.8, 487.5, 550.0]
+  lj_lambda:
+    schedule: [0.000, 0.020, 0.050, 0.100, 0.180, 0.300, 0.500, 0.700, 0.820, 0.900, 0.950, 0.980, 1.000]
+
+pf_gates:
+  overlap_min: 0.03
+  ess_n_min: 0.05
+  log_weight_995_max: 6.0
+
+outputs:
+  seed_level: data/processed/seed_level/free_energy_estimation_results.csv
+  audit_log: results/audits/pf_companion/pf_companion_audit_log.csv
+  allowed_claims:
+    pass: density_dependent
+    fail: proposal_quality_only
+
+mbar:
+  input_npz: data/external/free_energy/mbar_u_kn.npz
+  u_kn_key: u_kn
+  n_k_key: N_k
+  output_csv: tmp/mbar/free_energy_matrix.csv

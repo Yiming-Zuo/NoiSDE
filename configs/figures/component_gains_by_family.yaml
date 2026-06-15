@@ -1,0 +1,18 @@
+name: component_gains_by_family
+description: Component-gain figure across benchmark families.
+command:
+  - python
+  - -m
+  - noisde.figures.component_gains_by_family
+  - --root
+  - .
+  - --outdir
+  - results/figures/component_gains_by_family
+  - --stats-dir
+  - results/statistics/figures
+outputs:
+  - results/figures/component_gains_by_family/component_gains_by_family.pdf
+  - results/figures/component_gains_by_family/component_gains_by_family.svg
+  - results/statistics/figures/component_gains_by_family_summary.csv
+source_data:
+  - data/processed/seed_level/component_ablation_results.csv

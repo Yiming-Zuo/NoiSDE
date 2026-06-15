@@ -1,0 +1,53 @@
+# Shared schema for internal NoiSDE training configs.
+
+task:
+  kind: double_well
+  state_dim: 2
+  beta: 1.0
+  batch_size: 64
+  context_dim: 1
+
+model:
+  state_dim: 2
+  context_dim: 1
+  rank: 2
+  hidden_dim: 128
+  depth: 3
+  diffusion_floor: 0.0001
+  diffusion_max_scale: 2.0
+  energy_guidance_scale: 1.0
+  variant: A4
+  fixed_noise_scale: 0.1
+  over_noise_scale: 3.0
+
+loss:
+  lambda_end: 1.0
+  lambda_energy: 0.1
+  lambda_pn: 1.0
+  lambda_reg: 0.001
+  path_steps: 16
+  energy_threshold: 10.0
+  endpoint_kernel_bandwidth: 1.0
+  utility_weights:
+    ESS_N: 1.0
+    A_swap: 1.0
+    C_mode: 1.0
+    D_E: 1.0
+    CV2_w: 1.0
+    R_high_E: 1.0
+
+trainer:
+  steps: 1000
+  lr: 0.001
+  checkpoint_dir: checkpoints/toy
+  seed: 20260524
+  max_grad_norm: 10.0
+
+validation:
+  path_steps: 16
+  high_energy_threshold: 10.0
+
+selection:
+  safety_gates:
+    r_high_e_max: 0.1
+    d_e_max: 0.1

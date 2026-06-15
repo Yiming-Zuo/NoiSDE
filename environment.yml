@@ -1,0 +1,15 @@
+name: noisde
+channels:
+  - pytorch
+  - conda-forge
+dependencies:
+  - python=3.11
+  - matplotlib
+  - numpy
+  - openmm
+  - pandas
+  - pymbar
+  - pytorch
+  - pyyaml
+  - pytest
+  - pip

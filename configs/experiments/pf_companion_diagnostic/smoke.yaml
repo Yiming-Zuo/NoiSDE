@@ -1,0 +1,6 @@
+seed: 20260524
+batch_size: 8
+state_dim: 2
+audits:
+  identity_map: true
+  linear_gaussian: true

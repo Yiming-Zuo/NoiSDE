@@ -1,0 +1,19 @@
+# PF companion diagnostic contract.
+
+pf_companion:
+  modes: [score, current]
+  hutchinson_M: [1, 2, 4, 8, 16]
+  solver_steps: [16, 32, 64]
+  detached_feature_convention: true
+
+audits:
+  identity_map: true
+  linear_gaussian: true
+  strict_calibration_thresholds:
+    kl_max: 0.02
+    nll_error_max: 0.08
+    ess_error_max: 0.05
+    delta_f_error_max: 0.02
+
+outputs:
+  audit_log: results/audits/pf_companion/pf_companion_audit_log.csv

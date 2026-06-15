@@ -1,0 +1,20 @@
+name: main_result_overview
+description: Figure 1 main result overview.
+command:
+  - python
+  - -m
+  - noisde.figures.main_result_overview
+  - --root
+  - .
+  - --outdir
+  - results/figures/main_result_overview
+  - --stats-dir
+  - results/statistics/figures
+outputs:
+  - results/figures/main_result_overview/main_result_overview.pdf
+  - results/figures/main_result_overview/main_result_overview.svg
+  - results/statistics/figures/main_result_overview_summary.csv
+source_data:
+  - data/processed/seed_level/toy_sampling_results.csv
+  - data/processed/seed_level/alanine_transport_results.csv
+  - data/processed/seed_level/free_energy_estimation_results.csv
