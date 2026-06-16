@@ -202,10 +202,31 @@ def summarize_component_ablation(
     contrasts: Iterable[ContrastSpec] = (),
 ) -> ComponentAblationSummary:
     variant_set = set(variants) if variants is not None else None
+    contrast_list = list(contrasts)
     units = _load_units(Path(input_path), tier=tier, metric=metric, variants=variant_set)
+    if not units:
+        raise ValueError(f"No rows matched tier={tier!r}, metric={metric!r}")
+    contrast_rows = _contrast_rows(
+        units,
+        tier=tier,
+        metric=metric,
+        contrasts=contrast_list,
+    )
+    observed_contrasts = {
+        (row["left_variant"], row["right_variant"])
+        for row in contrast_rows
+    }
+    missing_contrasts = [
+        f"{item.left}:{item.right}"
+        for item in contrast_list
+        if (item.left, item.right) not in observed_contrasts
+    ]
+    if missing_contrasts:
+        names = ", ".join(missing_contrasts)
+        raise ValueError(f"No paired units found for contrast(s): {names}")
     return ComponentAblationSummary(
         summary_rows=_summary_rows(units, tier=tier, metric=metric),
-        contrast_rows=_contrast_rows(units, tier=tier, metric=metric, contrasts=contrasts),
+        contrast_rows=contrast_rows,
     )
 
 

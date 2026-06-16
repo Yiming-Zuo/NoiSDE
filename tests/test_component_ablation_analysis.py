@@ -104,3 +104,25 @@ def test_component_ablation_output_writer_uses_stable_csv_names(tmp_path: Path) 
     assert contrast_path.name == "component_ablation_family_contrasts.csv"
     assert summary_path.read_text(encoding="utf-8").splitlines()[0].startswith("tier,metric,variant")
     assert contrast_path.read_text(encoding="utf-8").splitlines()[0].startswith("tier,metric,left_variant")
+
+
+def test_component_ablation_summary_rejects_empty_filters(tmp_path: Path) -> None:
+    path = tmp_path / "component_ablation.csv"
+    write_rows(
+        path,
+        [row("core_ablation", "T1", "A4", "R001", "1.0", "1")],
+    )
+
+    with pytest.raises(ValueError, match="No rows matched"):
+        summarize_component_ablation(path, metric="missing_metric")
+
+
+def test_component_ablation_summary_rejects_unpaired_contrasts(tmp_path: Path) -> None:
+    path = tmp_path / "component_ablation.csv"
+    write_rows(
+        path,
+        [row("core_ablation", "T1", "A4", "R001", "1.0", "1")],
+    )
+
+    with pytest.raises(ValueError, match="No paired units"):
+        summarize_component_ablation(path, contrasts=[ContrastSpec("A4", "B1")])

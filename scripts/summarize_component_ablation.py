@@ -76,19 +76,22 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> None:
     args = parse_args()
-    contrasts = (
-        [ContrastSpec.parse(item) for item in args.contrasts]
-        if args.contrasts
-        else DEFAULT_CONTRASTS
-    )
-    variants = args.variants if args.variants else DEFAULT_VARIANTS
-    summary = summarize_component_ablation(
-        project_path(args.input),
-        tier=args.tier,
-        metric=args.metric,
-        variants=variants,
-        contrasts=contrasts,
-    )
+    try:
+        contrasts = (
+            [ContrastSpec.parse(item) for item in args.contrasts]
+            if args.contrasts
+            else DEFAULT_CONTRASTS
+        )
+        variants = args.variants if args.variants else DEFAULT_VARIANTS
+        summary = summarize_component_ablation(
+            project_path(args.input),
+            tier=args.tier,
+            metric=args.metric,
+            variants=variants,
+            contrasts=contrasts,
+        )
+    except ValueError as exc:
+        raise SystemExit(f"error: {exc}") from exc
     summary_path, contrast_path = write_component_ablation_outputs(
         summary,
         project_path(args.outdir),
